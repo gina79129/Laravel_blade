@@ -6,6 +6,7 @@
 
         <title>Laravel</title>
         <h1>{{config('services.sparkpost.secret')}}</h1>
+        <h1>{{config('services.bugsnag.key')}}</h1>
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 

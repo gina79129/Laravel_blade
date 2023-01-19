@@ -34,5 +34,8 @@ return [
     'sparkpost' =>[
         'secret' =>'abcdefg',
     ],
+    'bugsnag' =>[
+        'key' =>env('BUGSNAG_API_KEY'),
+    ],
 
 ];
