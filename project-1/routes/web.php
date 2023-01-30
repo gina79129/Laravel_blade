@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\MembersController;
+use App\Http\Controllers\InvitationController;
+// use Illuminate\Support\Facades\URL;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +23,12 @@ use App\Http\Controllers\MembersController;
 Route::get('/', [WelcomeController::class,'index']);
 
 Route::get('about',[AboutController::class,'about']);
+
+// Route::get('invitations/{invitation}/{answer}',function($invitation,$answer){
+//     return URL::signedRoute('invitations',['invitation'=>$invitation,'answer'=>$answer]);
+// })->name('invitations');
+Route::get('invitations/{invitation}/{answer}',[InvitationController::class,'inv'])->name('invitations');
+
 
 Route::get('/greeting',function(){
     return 'Hello world';
