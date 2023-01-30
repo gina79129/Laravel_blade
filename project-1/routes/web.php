@@ -77,6 +77,11 @@ Route::get('services',function(){
     return view('services');
 });
 
+// 處理不匹配的路由導向
+Route::fallback(function(){
+    return "你走錯地方囉";
+});
+
 // Route::get('/', function () {
 //     return 'hello world';
 // });
