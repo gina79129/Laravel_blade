@@ -19,6 +19,18 @@ Route::get('/', [WelcomeController::class,'index']);
 
 Route::get('about',[AboutController::class,'about']);
 
+Route::get('/greeting',function(){
+    return 'Hello world';
+});
+
+Route::get('/user/{id}/friends',function($id){
+    return 'hello im ' . $id;
+});
+
+Route::get('/user/{id?}',function($id='steve'){
+    return 'hello im ' . $id;
+});
+
 Route::get('abc',function(){
     return view('about');
 });
@@ -37,5 +49,25 @@ Route::get('services',function(){
 
 // Route::get('/', function () {
 //     return view('welcome');
+// });
+
+// Route::post('/',function(){
+//     處理有人傳送一個POST請求到這個路由的情況
+// });
+
+// Route::put('/',function(){
+//     處理有人傳送一個PUT請求到這個路由的情況
+// });
+
+// Route::delete('/',function(){
+//     處理有人傳送一個DELETE請求到這個路由的情況
+// });
+
+// Route::any('/',function(){
+//     處理被傳送到這個路由的任何動作詞請求
+// });
+
+// Route::match(['get','post'],'/',function(){
+//     處理被傳送到這個路由的GET或POST請求
 // });
 
