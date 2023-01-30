@@ -51,7 +51,7 @@ Route::get('/hh/{username}',function($username){
 
 Route::get('/mm/{id}/{slug}',function($id,$slug){
     return 'mm '.$id.' '.$slug;
-})->where('slug','[A-Za-z]+');
+})->where('slug','[A-Za-z]+')->name('mmgo');
 // Route::get('/mm/{id}/{slug}',function($id,$slug){
 //     return 'mm '.$id.' '.$slug;
 // })->where(['id'=>'[0-9]+','slug'=>'[A-Za-z]+']);
