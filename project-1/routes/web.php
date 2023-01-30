@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\AboutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,21 @@ use App\Http\Controllers\WelcomeController;
 */
 
 Route::get('/', [WelcomeController::class,'index']);
+
+Route::get('about',[AboutController::class,'about']);
+
+Route::get('abc',function(){
+    return view('about');
+});
+
+Route::get('products',function(){
+    return view('products');
+});
+
+Route::get('services',function(){
+    return view('services');
+});
+
 // Route::get('/', function () {
 //     return 'hello world';
 // });
@@ -22,3 +38,4 @@ Route::get('/', [WelcomeController::class,'index']);
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
