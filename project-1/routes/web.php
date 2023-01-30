@@ -14,7 +14,8 @@ use App\Http\Controllers\AboutController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// 參考網站
+// https://laravel.com/docs/9.x/routing
 Route::get('/', [WelcomeController::class,'index']);
 
 Route::get('about',[AboutController::class,'about']);
@@ -26,6 +27,19 @@ Route::get('/greeting',function(){
 Route::get('/user/{id}/friends',function($id){
     return 'hello im ' . $id;
 });
+
+// 使用正則表達式來限制路由
+Route::get('/tt/{id}',function($id){
+    return 'hello im tt ' .$id;
+})->where('id','[0-9]+');
+
+Route::get('/hh/{username}',function($username){
+    return 'im hh '.$username;
+})->where('username','[A-Za-z]+');
+
+Route::get('/mm/{id}/{slug}',function($id,$slug){
+    return 'mm '.$id.' '.$slug;
+})->where(['id'=>'[0-9]+','slug'=>'[A-Za-z]+']);
 
 Route::get('/user/{id?}',function($id='steve'){
     return 'hello im ' . $id;
