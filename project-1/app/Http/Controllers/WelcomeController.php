@@ -11,4 +11,10 @@ class WelcomeController extends Controller
         // return 'Hello world index';
         return view('welcome');
     }
+    public function products(){
+        return view('products');
+    }
+    public function services(){
+        return view('services');
+    }
 }
