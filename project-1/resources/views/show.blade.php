@@ -8,5 +8,6 @@
 </head>
 <body>
     <a href="<?php echo route('members.show',['id'=>14])?>">testbutton</a>
+    <a href="<?php echo route('profile',['id'=>88])?>">ttt</a>
 </body>
 </html>

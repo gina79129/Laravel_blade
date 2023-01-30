@@ -36,6 +36,10 @@ Route::get('/posts/{post}/comments/{comment}',function($PId,$CId){
 
 Route::get('/members/{id}',[MembersController::class,'show'])->name('members.show');
 
+Route::get('/all/{id}/profile',function(){
+    return view('services');
+})->name('profile');
+
 // 使用正則表達式來限制路由
 Route::get('/tt/{id}',function($id){
     return 'hello im tt ' .$id;
@@ -47,7 +51,10 @@ Route::get('/hh/{username}',function($username){
 
 Route::get('/mm/{id}/{slug}',function($id,$slug){
     return 'mm '.$id.' '.$slug;
-})->where(['id'=>'[0-9]+','slug'=>'[A-Za-z]+']);
+})->where('slug','[A-Za-z]+');
+// Route::get('/mm/{id}/{slug}',function($id,$slug){
+//     return 'mm '.$id.' '.$slug;
+// })->where(['id'=>'[0-9]+','slug'=>'[A-Za-z]+']);
 
 Route::get('/user/{id?}',function($id='steve'){
     return 'hello im ' . $id;
