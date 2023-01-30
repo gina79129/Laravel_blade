@@ -29,6 +29,11 @@ Route::get('/user/{id}/friends',function($id){
     return 'hello im ' . $id;
 });
 
+// 參數依順序注入，跟名稱無關
+Route::get('/posts/{post}/comments/{comment}',function($PId,$CId){
+    return $PId ." / ".$CId;
+});
+
 Route::get('/members/{id}',[MembersController::class,'show'])->name('members.show');
 
 // 使用正則表達式來限制路由
