@@ -52,6 +52,7 @@ Route::get('/hh/{username}',function($username){
 Route::get('/mm/{id}/{slug}',function($id,$slug){
     return 'mm '.$id.' '.$slug;
 })->where('slug','[A-Za-z]+')->name('mmgo');
+
 // Route::get('/mm/{id}/{slug}',function($id,$slug){
 //     return 'mm '.$id.' '.$slug;
 // })->where(['id'=>'[0-9]+','slug'=>'[A-Za-z]+']);
@@ -92,6 +93,14 @@ Route::domain('{account}.test')->group(function(){
 
 Route::get('services',function(){
     return view('services');
+});
+
+Route::name('members.')->prefix('members')->group(function(){
+    Route::name('comments.')->prefix('comments')->group(function(){
+        Route::get('{id}',function(){
+            return view('show');
+        })->name('ttshow');
+    });
 });
 
 // 處理不匹配的路由導向

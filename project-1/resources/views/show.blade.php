@@ -10,5 +10,7 @@
     <a href="<?php echo route('members.show',['id'=>14])?>">testbutton</a>
     <a href="<?php echo route('profile',['id'=>88])?>">ttt</a>
     <a href="<?php echo route('mmgo',['slug'=>'yahoo','id'=>39,'opt'=>'ss'])?>">mmgo</a>
+    <a href="<?php echo route('profile',['id'=>88])?>">ttt</a>
+    <a href="<?php echo route('members.comments.ttshow',['id'=>553])?>">member.ttshow</a>
 </body>
 </html>
