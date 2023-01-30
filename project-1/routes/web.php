@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\MembersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,8 @@ Route::get('/greeting',function(){
 Route::get('/user/{id}/friends',function($id){
     return 'hello im ' . $id;
 });
+
+Route::get('/members/{id}',[MembersController::class,'show'])->name('members.show');
 
 // 使用正則表達式來限制路由
 Route::get('/tt/{id}',function($id){
