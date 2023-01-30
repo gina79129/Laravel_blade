@@ -21,6 +21,6 @@
     </head>
     <body class="antialiased">
         <h1>I'm signed</h1><br>
-        {{$url}}
+       {{$url}}
     </body>
 </html>
