@@ -71,6 +71,23 @@ Route::prefix('family')->group(function(){
         });
 });
 
+// 子網域路由
+Route::domain('project-1.test')->group(function(){
+    Route::get('omg',function(){
+        return "i'm omg!!";
+    });
+});
+
+// 參數化的子網域路由
+Route::domain('{account}.test')->group(function(){
+    Route::get('/',function($account){
+
+    });
+
+    Route::get('/animal/{id}',function($account,$id){
+        return $account.$id;
+    });
+});
 
 
 Route::get('services',function(){
