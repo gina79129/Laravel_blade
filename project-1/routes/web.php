@@ -60,13 +60,18 @@ Route::get('/user/{id?}',function($id='steve'){
     return 'hello im ' . $id;
 });
 
-Route::get('abc',function(){
-    return view('about');
+//群組前綴 http://project-1.test:8000/family/abc
+Route::prefix('family')->group(function(){
+        Route::get('/abc',function(){
+            return view('about');
+        });
+
+        Route::get('/products',function(){
+            return view('products');
+        });
 });
 
-Route::get('products',function(){
-    return view('products');
-});
+
 
 Route::get('services',function(){
     return view('services');
