@@ -138,6 +138,8 @@ Route::get('services',function(){
     return view('services');
 });
 
+
+
 Route::name('members.')->prefix('members')->group(function(){
     Route::name('comments.')->prefix('comments')->group(function(){
         Route::get('{id}',function(){
@@ -202,6 +204,15 @@ Route::get('/aaddd',function(){
 
 
 */
+
+
+/**
+ * 中止請求
+ * abort()
+ * abort_unless()  :false
+ * abort_if()      :true
+ * 參考網站:https://laravel.com/docs/9.x/helpers#method-abort
+ */
 
 // 處理不匹配的路由導向
 Route::fallback(function(){
