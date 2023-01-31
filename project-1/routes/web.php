@@ -205,7 +205,39 @@ Route::get('/aaddd',function(){
 
 */
 
+// response->make()
+/**
+ * 如果想要親自建立一個HTTP回應，只要將資料輸入response()->make()的第一個參數即可，第二個參數是HTTP狀態碼，第三個是標頭
+ */
+Route::get('/home', function () {
+    return response('Hello World', 200)->header('Content-Type', 'text/plain');
+});
 
+//response->json, 會自動設定Content-Type: application/json, 會將陣列轉換為JSON:json_encode
+//參考網站:https://laravel.com/docs/9.x/responses#main-content
+Route::get('/gojson',function(){
+    return response()->json(['name'=>'Aligail','state'=>'CA']);
+});
+
+/**
+ * response->download() 第一個參數是是傳送的檔案，第二個是將它改成$name名稱
+ * return response()->download($pathToFile);
+ * return response()->download($pathToFile, $name, $headers);
+ *
+ * response->streamDownload() 從外部伺服器串流下載
+ * use App\Services\GitHub;
+ * return response()->streamDownload(function () {
+ *      echo GitHub::api('repo')
+ *               ->contents()
+ *               ->readme('laravel', 'laravel')['contents'];
+ *                }, 'laravel-readme.md');
+ */
+
+
+Route::get('/allCacheClear', function() {
+    Artisan::call('cache:clear');
+    return "所有Cache已經清除完成";
+});
 /**
  * 中止請求
  * abort()
