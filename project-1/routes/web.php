@@ -6,6 +6,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\MembersController;
 use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\MySampleController;
 // use Illuminate\Support\Facades\URL;
 
 
@@ -44,6 +45,8 @@ Route::resource('tasks', TaskController::class);
 //     'posts' => PostController::class,
 // ]);
 
+//綁定API資源控制器
+Route::apiResource('samples',MySampleController::class);
 
 
 Route::get('/greeting',function(){
