@@ -8,6 +8,7 @@ use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\MySampleController;
 use App\Http\Controllers\ProvisionServer;
+use App\Http\Controllers\TestController;
 use App\Models\Post;
 // use Illuminate\Support\Facades\URL;
 
@@ -22,6 +23,8 @@ use App\Models\Post;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/Testix',[TestController::class,'index'])->name('Test.index');
 // 參考網站
 // https://laravel.com/docs/9.x/routing
 Route::get('/', [WelcomeController::class,'index']);
