@@ -8,6 +8,7 @@ use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\MySampleController;
 use App\Http\Controllers\ProvisionServer;
+use App\Models\Post;
 // use Illuminate\Support\Facades\URL;
 
 
@@ -51,6 +52,10 @@ Route::apiResource('samples',MySampleController::class);
 
 // 使用invoke 綁定單一controller
 Route::get('/profile/{id?}',ProvisionServer::class);
+
+Route::get('/posts/{post:slug}',function(Post $post){
+    return $post;
+});
 
 Route::get('/greeting',function(){
     return 'Hello world';
