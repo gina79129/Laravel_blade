@@ -28,7 +28,7 @@ Route::get('about',[AboutController::class,'about']);
 //     return URL::signedRoute('invitations',['invitation'=>$invitation,'answer'=>$answer]);
 // })->name('invitations');
 Route::get('invitations/{invitation}/{answer}',[InvitationController::class,'inv'])->name('invitations');
-Route::get('invtt/{invitation}/{answer}',[InvitationController::class,'invtt'])->name('invtt');
+Route::get('invtt/{invitation}/{answer}',[InvitationController::class,'invtt'])->name('invtt')->middleware('signed');
 
 
 Route::get('/greeting',function(){
