@@ -53,9 +53,16 @@ Route::apiResource('samples',MySampleController::class);
 // 使用invoke 綁定單一controller
 Route::get('/profile/{id?}',ProvisionServer::class);
 
+// 隱性綁定model getRouteKeyName
 Route::get('/posts/{post:slug}',function(Post $post){
     return $post;
 });
+
+
+Route::get('/dashboard', function () {
+    return redirect('about');
+});
+
 
 Route::get('/greeting',function(){
     return 'Hello world';
@@ -138,6 +145,63 @@ Route::name('members.')->prefix('members')->group(function(){
         })->name('ttshow');
     });
 });
+
+// 轉址(全域輔助)
+Route::get('/dashboard', function () {
+    return redirect('about');
+});
+
+//轉址->to
+Route::get('/userid', function () {
+    return redirect()->to('services');
+});
+
+//轉址->route 指向路由名稱
+Route::get('/mysample',[MySampleController::class,'index'])->name('MySample.index');
+Route::get('/mysampleix', function () {
+    return redirect()->route('MySample.index');
+});
+
+//轉址->route 指向路由名稱 帶參數
+Route::get('/mcid',function(){
+    return redirect()->route('members.comments.ttshow',['id'=>3356]);
+});
+
+//轉址->action 指定controller->function
+Route::get('/aaddd',function(){
+    return redirect()->action([WelcomeController::class,'index']);
+});
+
+
+/*
+    其他轉址方式
+    home():轉址到名為home的路由。refresh()::轉址到用戶目前所在的同一個網頁。away()::可轉址到外部URL，而不需要做預設的URL驗證。
+    secure:如同將secure參數設為"true"的to()
+    action():可讓你用兩種方式之一連接controller與方法，用字串( redirect()->action('MyController@myMethod')或tuple(redirect()->action([MyController::class,'myMethod']) )
+    guest():這是身分驗證系統內部使用的方法；當用戶造訪一個未通過身分驗證的路由時，這個方法會捕捉"其他企圖前往"的路由，再轉址用戶(通常回到登入頁面)
+    intended():這也是身分驗證系統內部使用的方法，當用戶成功通過身分證之後，它會捕捉guest()方法儲存的"企圖前往"的URL，並將用戶轉址到那裡。
+    redirect()->with():雖然with()的結構類似你可以對著redirect()呼叫的其他方法，但它的差異在於它並未定義你將轉址到哪裡，而是你連同轉址一起傳送的資料。當你將用戶轉址到不同的網頁時，通常會一起傳遞一些資料。你可以親自將資料送至session，不過Laravel有一些方便的方法可以輔助你做這件事。
+                       最常見的做法是使用with()來同時傳遞一個內含鍵與值的陣列，或單純傳遞一對鍵與值，可以將with()資料存入session，在下次載入網頁時使用
+
+                       Route::get('redirect-with-key-value',function(){
+                            return redirect('dashboard')->with('error',true);
+                       });
+
+                       Route::get('redirect-with-array',function(){
+                            return redirect('dashboard')->with(['error'=>true,'message'=>'Whoops!']);
+                       });
+
+                       withInput()連同表單輸入一起轉址
+                       Route::get('from',function(){
+                            return redirect('from')->withInput()->with(['error'=>true,'message'=>'whoops!']);
+                       });
+
+                       要取得以withInput()傳遞的輸入，最簡單的方式是使用old()輔助函式，它可以用來取得所有舊輸入(old())，如果沒有舊值，則將第二個參數當成預設值。
+                       withError($error)連同錯誤一起轉址
+
+
+
+*/
 
 // 處理不匹配的路由導向
 Route::fallback(function(){

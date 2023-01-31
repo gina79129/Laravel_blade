@@ -13,8 +13,9 @@ class MySampleController extends Controller
      */
     public function index()
     {
-        //
+        return "i'm MySample.index";
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -35,7 +36,7 @@ class MySampleController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
