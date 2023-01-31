@@ -5,6 +5,7 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\MembersController;
 use App\Http\Controllers\InvitationController;
+use App\Http\Controllers\TasksController;
 // use Illuminate\Support\Facades\URL;
 
 
@@ -30,6 +31,8 @@ Route::get('about',[AboutController::class,'about']);
 Route::get('invitations/{invitation}/{answer}',[InvitationController::class,'inv'])->name('invitations');
 Route::get('invtt/{invitation}/{answer}',[InvitationController::class,'invtt'])->name('invtt')->middleware('signed');
 
+Route::get('tasks/create',[TasksController::class,'create']);
+Route::post('tasks',[TasksController::class,'store']);
 
 Route::get('/greeting',function(){
     return 'Hello world';
